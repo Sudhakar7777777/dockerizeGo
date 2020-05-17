@@ -187,21 +187,21 @@ Remove intermediate images
 docker rmi \$(docker images -f dangling=true -q )
 ```
 
-## other notes
+### additional notes on edge cases
 
-### alternatively, use netgo like this example...
+To compile go apps with net, use netgo like this example...
 
 ```
 docker run -v \$(pwd):/go/bin --rm golang go get -tags netgo -installsuffix netgo github.com/golang/example/hello/...
 ```
 
-### -tags netgo instructs the toolchain to use netgo.
+-tags netgo instructs the toolchain to use netgo.
 
-### -installsuffix netgo will make sure that the resulting libraries (if any) are placed in a different, non-default directory. This will avoid conflicts between code built with and without netgo, if you do multiple go get (or go build) invocations.
+-installsuffix netgo will make sure that the resulting libraries (if any) are placed in a different, non-default directory. This will avoid conflicts between code built with and without netgo, if you do multiple go get (or go build) invocations.
 
 ### Handle certificate issues...
 
-### multiple options available. easy is to use Alpine image, where it has latest root certificates. Use like shown below...
+multiple options available. easy is to use Alpine image, where it has latest root certificates. Use like shown below...
 
 ```
 FROM alpine:3.4
@@ -212,7 +212,7 @@ RUN apk add --no-cache ca-certificates apache2-utils
 
 > apt-get update && apt-get install ... && rm -rf /var/cache/apt/\*
 
-### so... for above 2 steps... you can use alphine + certification + netgo to tackle these issues...
+so... for above 2 steps... you can use alphine + certification + netgo to tackle these issues...
 
 ## Reference:
 
