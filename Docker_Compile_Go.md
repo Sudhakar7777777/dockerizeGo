@@ -210,7 +210,9 @@ RUN apk add --no-cache ca-certificates apache2-utils
 
 ### note its, good idea to clean cache after installs... like...
 
-> apt-get update && apt-get install ... && rm -rf /var/cache/apt/\*
+```
+apt-get update && apt-get install ... && rm -rf /var/cache/apt/\*
+```
 
 so... for above 2 steps... you can use alphine + certification + netgo to tackle these issues...
 
