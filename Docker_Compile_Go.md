@@ -104,7 +104,7 @@ docker build -t page-size .
 docker run page-size
 ```
 
-### Slim Dockerfile (see folder: dockerSlim)
+### Slim Dockerfile (Multi-stage builds with Scratch base image)
 
 Use scratch as the base image for standlone executable
 
@@ -141,7 +141,13 @@ docker build -t -rm page-slim .
 docker run page-slim
 ```
 
-### Slim Plus Dockerfile (see folder: dockerSlimPlus)
+if you want to build and tag the initial buildImage, use this command:
+
+```
+docker build --target buildImage -t page-slim-base:latest .
+```
+
+### Slim Plus Dockerfile (Multi-stage builds with Alpine base image)
 
 Use alpine linux as the base for deployed app.
 
@@ -218,4 +224,8 @@ so... for above 2 steps... you can use alphine + certification + netgo to tackle
 
 ## Reference:
 
-1. [docker-golang](https://www.docker.com/blog/docker-golang/)
+1. [docker golang](https://www.docker.com/blog/docker-golang/)
+2. [docker build](https://docs.docker.com/engine/reference/builder/)
+3. [docker multi stage builds](https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds)
+4. [docker compose](https://docs.docker.com/compose/compose-file/)
+5. [go tooling](https://www.alexedwards.net/blog/an-overview-of-go-tooling#build-and-deployment)
